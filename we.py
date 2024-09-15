@@ -9,7 +9,7 @@ class WeaG:
         self.url = self.env['url']
         self.AUTHENTICATION = self.env['token']
 
-    def grab(self , site):
+    def grab(self, site):
         '''this is a main funtion for grabbing data from CWA's open data api ->
         {O:....}'''
         def _grab(url, site ):
@@ -33,9 +33,23 @@ class WeaG:
         for i in range(len(self.url)):
             ths[i] = Thread(target=_grab, args=(self.url[i],site), daemon=True)
             ths[i].start()
-            ths[i].join()
 
+        for i in range(len(self.url)):
+            ths[i].join()
         return info
+    
+    def tostr(self , info):
+        o = info.get('O')
+        o = f'觀測時間 : {o}'if o else ''
+        t = info.get('T')
+        t = f'溫度 : {t:.1f}度' if t else ''
+        h = info.get('H')
+        h = f'濕度 : {h:.0%}' if h else ''
+        r = info.get('R')
+        r = f'雨量 : {r:.1f}mm' if (r != None) else ''
+
+        return f'{o}\n {t}\n {h}\n {r}'
+    
 if __name__ == '__main__':
     import argparse 
 
