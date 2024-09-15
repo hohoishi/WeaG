@@ -16,8 +16,8 @@ app = flask.Flask(__name__)
 w = WeaG() 
 
 # 用您的 Channel Access Token 和 Channel Secret 替換以下值
-line_bot_api = LineBotApi('OHHU5/3aJTGfZ2GaIWK0WGszIVBvRAagAhCjAOD9RWOpw42AvkQv38Bt7aXdKBadTEpcg526bReSZr9AS2zyE4kFMUWxNt3Ye1jf0ubJbjPLJm3VItqtHbvd9Fsi06sXWtimw+U0aPrykSDNChQMQgdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('b7c0a3e497c95a20ab0d62288110625a')
+line_bot_api = LineBotApi('123123')
+handler = WebhookHandler('123123')
 
 @app.route("/callback", methods=['POST'])
 def callback():
